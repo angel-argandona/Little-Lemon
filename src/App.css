@@ -1,63 +1,52 @@
-header {
-	display: grid;
-	grid-auto-rows: 100px;
-	grid-template-columns: minmax(0,10vw) 33% 1fr minmax(0,10vw);
-	justify-items: stretch;
-	align-items: center;
-}
-
+/* General Styling */
 header img {
 	height: auto;
 	max-height: 90%;
-	max-width: 100%;
-	min-width: 100px;
+	max-width: 90%;
+	min-width: 50px;
+	padding: 5%;
 	object-fit: contain;
-	justify-self: start;
 }
 
-header ul {
+nav ul {
 	list-style-type: none;
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
 	padding: 0;
+	margin: 0;
+}
+
+nav a {
+	text-decoration: none;
+}
+
+header ul {
+	align-items: center;
 }
 
 header li {
 	display: inline-block;
-	padding: 20px;
-}
-
-header a {
-	text-decoration: none;
+	padding: 5px;
 }
 
 footer {
-	width: 100%;
-	display: grid;
-	grid-template-columns: minmax(0,10vw) minmax(50px,100px) 1fr 1fr 1fr minmax(0,10vw);
-	grid-auto-rows: 250px;
-	place-items: stretch;
 	padding-top: 10px;
 	padding-bottom: 10px;
 }
 
-footer img {
+.footer-logo {
 	height: auto;
-	max-height: 230px;
-	max-width: 100%;
-	min-width: 10px;
+	max-height: 90%;
+	max-width: 90%;
+	min-width: 20px;
 	object-fit: contain;
 	justify-self: start;
+	padding: 5%;
 }
 
 footer ul {
 	height: 100%;
-	margin: 0;
-	list-style-type: none;
-	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
 }
 
 footer div {
@@ -71,4 +60,73 @@ footer h2 {
 
 footer p {
 	margin: 10px 0 10px 0;
+}
+
+/* Big screen layout */
+header {
+	display: grid;
+	grid-template-rows: 100px;
+	grid-template-columns: minmax(0,10vw) 30vw 1fr minmax(0,10vw);
+	justify-items: stretch;
+	align-items: center;
+}
+
+header img {
+	justify-self: start;
+}
+
+footer {
+	display: grid;
+	grid-template-columns: minmax(0,10vw) minmax(50px,100px) 1fr 1fr 1fr minmax(0,10vw);
+	grid-template-rows: 250px;
+	place-items: stretch;
+	gap: 30px;
+}
+
+/* Small screen layout */
+@media (max-width: 600px) {
+	header {
+		display: grid;
+		grid-template-rows: 0 50px 50px 0;
+		grid-template-columns: 100vw;
+		justify-items: stretch;
+		align-items: center;
+	}
+
+	.header-logo {
+		justify-self: center;
+	}
+	
+	footer {
+		display: grid;
+		grid-template-columns: 30vw 70vw;
+		grid-template-rows: 0 repeat(3, 250px);
+		grid-template-areas: "empty1 empty2" "logo nav" "contact contact" "social social";
+		place-items: stretch;
+		gap: 20px;
+	}
+
+	.footer-logo {
+		grid-area: logo;
+	}
+
+	.footer-nav {
+		grid-area: nav;
+	}
+
+	.contact-info {
+		grid-area: contact;
+	}
+
+	.social-links {
+		grid-area: social;
+	}
+
+	.padding-1 {
+		grid-area: empty1;
+	}
+
+	.padding-2 {
+		grid-area: empty2;
+	}
 }

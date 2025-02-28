@@ -3,9 +3,9 @@ import Nav from "./Nav";
 
 const Header = () => {
 	return (
-		<header className="header">
+		<header>
 			<div></div>
-			<img src={require("../images/logos/big-logo-1.png")}></img>
+			<img className="header-logo" src={require("../images/logos/big-logo-1.png")}></img>
 			<Nav></Nav>
 			<div></div>
 		</header>
