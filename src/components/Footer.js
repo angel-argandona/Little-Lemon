@@ -1,9 +1,11 @@
 import React from "react";
+import Nav from "./Nav";
 
 const Footer = () => {
 	return (
 		<footer>
-			<img href=""></img>
+			<div></div>
+			<img src={require("../images/logos/small-logo-1.png")}></img>
 			<Nav/>
 			<div>
 				<h2>Contact</h2>
@@ -15,6 +17,7 @@ const Footer = () => {
 				<h2>Social Media Links</h2>
 				<p>Links here</p>
 			</div>
+			<div></div>
 		</footer>
 	)
 }
