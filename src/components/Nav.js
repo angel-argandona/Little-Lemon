@@ -1,15 +1,15 @@
 import React from "react";
 
-const Nav = () => {
+const Nav = (props) => {
 	return (
 		<nav>
 			<ul>
-				<li><a href="#home">HOME</a></li>
-				<li><a href="#about">ABOUT</a></li>
-				<li><a href="#menu">MENU</a></li>
-				<li><a href="#reservations">RESERVATIONS</a></li>
-				<li><a href="#order-online">ORDER ONLINE</a></li>
-				<li><a href="#login">LOGIN</a></li>
+				<li><a href="#home" style={props.style}>Home</a></li>
+				<li><a href="#about" style={props.style}>About</a></li>
+				<li><a href="#menu" style={props.style}>Menu</a></li>
+				<li><a href="#reservations" style={props.style}>Reservations</a></li>
+				<li><a href="#order-online" style={props.style}>Order Online</a></li>
+				<li><a href="#login" style={props.style}>Login</a></li>
 			</ul>
 		</nav>
 	)

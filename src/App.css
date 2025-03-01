@@ -1,4 +1,47 @@
 /* General Styling */
+h1 {
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	font-size: 40pt;
+	font-weight: 600;
+	color: #F4CE14;
+	margin: 0;
+}
+
+h2 {
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	font-size: 30pt;
+	color: #EDEFEE;
+	margin: 0;
+}
+
+h3 {
+	font-family: sans-serif;
+	font-size: 20pt;
+	font-weight: 800;
+	text-transform: uppercase;
+	color: black;
+	margin: 0;
+}
+
+h4 {
+	font-family: sans-serif;
+	font-size: 16pt;
+	font-weight: 800;
+	color: black;
+	margin: 0;
+}
+
+h5 {
+	font-family: sans-serif;
+	font-size: 18pt;
+	color: black;
+	margin: 0;
+}
+
+p {
+	font-family: sans-serif;
+}
+
 header img {
 	height: auto;
 	max-height: 90%;
@@ -29,9 +72,14 @@ header li {
 	padding: 5px;
 }
 
+main img {
+	border-radius: 16px;
+}
+
 footer {
 	padding-top: 10px;
 	padding-bottom: 10px;
+	background-color: #495E57;
 }
 
 .footer-logo {
@@ -47,6 +95,12 @@ footer {
 footer ul {
 	height: 100%;
 	flex-direction: column;
+}
+
+footer a {
+	font-family: sans-serif;
+	font-weight: 500;
+	color: black;
 }
 
 footer div {
@@ -77,10 +131,22 @@ header img {
 
 footer {
 	display: grid;
-	grid-template-columns: minmax(0,10vw) minmax(50px,100px) 1fr 1fr 1fr minmax(0,10vw);
+	grid-template-columns: minmax(0,10vw) minmax(50px,150px) 1fr 1fr 1fr minmax(0,10vw);
 	grid-template-rows: 250px;
 	place-items: stretch;
-	gap: 30px;
+	gap: 0px;
+}
+
+footer nav {
+	padding-left: 30px;
+}
+
+.contact-info {
+	padding-left: 30px;
+}
+
+.social-links {
+	padding-left: 30px;
 }
 
 /* Small screen layout */
@@ -110,16 +176,19 @@ footer {
 		grid-area: logo;
 	}
 
-	.footer-nav {
+	footer nav {
 		grid-area: nav;
+		padding-left: 0;
 	}
 
 	.contact-info {
 		grid-area: contact;
+		padding-left: 0;
 	}
 
 	.social-links {
 		grid-area: social;
+		padding-left: 0;
 	}
 
 	.padding-1 {
