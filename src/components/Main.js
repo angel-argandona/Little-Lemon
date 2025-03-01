@@ -1,19 +1,25 @@
 import React from "react";
 import "./Main.css";
+import HeroSection from "./HeroSection";
+
+/*<section className="hero-section">
+				<div className="padding-left"></div>
+				<div className="hero-content">
+					<div className="hero-text">
+						<h1>Little Lemon</h1>
+						<h2>Chicago</h2>
+						<p>We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.</p>
+						<button>Reserve a Table</button>
+					</div>
+					<img src={require("../images/hero-image.jpg")}></img>
+				</div>
+				<div className="padding-right"></div>
+			</section>*/
 
 const Main = () => {
 	return (
 		<main>
-			<section className="hero-section">
-				<div className="padding-left"></div>
-				<div className="hero-info">
-					<h1>Little Lemon</h1>
-					<h2>Chicago</h2>
-					<p>We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.</p>
-				</div>
-				<img src={require("../images/hero-image.jpg")}></img>
-				<div className="padding-right"></div>
-			</section>
+			<HeroSection/>
 			<section className="specials-section">
 
 			</section>
