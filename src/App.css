@@ -72,13 +72,9 @@ header li {
 	padding: 5px;
 }
 
-main img {
-	border-radius: 16px;
-}
-
 footer {
-	padding-top: 10px;
-	padding-bottom: 10px;
+	padding-top: 20px;
+	padding-bottom: 20px;
 	background-color: #495E57;
 }
 
@@ -119,8 +115,8 @@ footer p {
 /* Big screen layout */
 header {
 	display: grid;
-	grid-template-rows: 100px;
 	grid-template-columns: minmax(0,10vw) 30vw 1fr minmax(0,10vw);
+	grid-template-rows: 100px;
 	justify-items: stretch;
 	align-items: center;
 }
@@ -153,8 +149,8 @@ footer nav {
 @media (max-width: 600px) {
 	header {
 		display: grid;
-		grid-template-rows: 0 50px 50px 0;
 		grid-template-columns: 100vw;
+		grid-template-rows: 0 50px 50px 0;
 		justify-items: stretch;
 		align-items: center;
 	}
@@ -191,11 +187,11 @@ footer nav {
 		padding-left: 0;
 	}
 
-	.padding-1 {
+	footer .padding-left {
 		grid-area: empty1;
 	}
 
-	.padding-2 {
+	footer .padding-right {
 		grid-area: empty2;
 	}
 }

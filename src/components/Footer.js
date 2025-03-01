@@ -11,7 +11,7 @@ const Footer = () => {
 	
 	return (
 		<footer>
-			<div className="padding-1"></div>
+			<div className="padding-left"></div>
 			<img className="footer-logo" src={require("../images/logos/small-logo-white.png")}></img>
 			<Nav style={footerStyle}/>
 			<div className="contact-info">
@@ -24,7 +24,7 @@ const Footer = () => {
 				<h3>Social Media Links</h3>
 				<p>Links here</p>
 			</div>
-			<div className="padding-2"></div>
+			<div className="padding-right"></div>
 		</footer>
 	)
 }

@@ -1,0 +1,41 @@
+/* General styling */
+main img {
+	border-radius: 30px;
+}
+
+.hero-section img {
+	height: 100%;
+	max-width: 100%;
+	min-width: 100px;
+	object-fit: cover;
+	margin-top: 10px;
+}
+
+/* Big screen layout */
+.hero-section {
+	display: grid;
+	grid-template-columns: minmax(0,10vw) 1fr 1fr minmax(0,10vw);
+	grid-template-rows: 40vh 10vh;
+	grid-template-areas: "pl info pic pr" ". . pic .";
+	place-items: stretch;
+}
+
+.hero-section .padding-left {
+	grid-area: pl;
+	background-color: #495E57;
+}
+
+.hero-info {
+	grid-area: info;
+	background-color: #495E57;
+}
+
+.hero-section img {
+	grid-area: pic;
+	background-color: #495E57;
+}
+
+.hero-section .padding-right {
+	grid-area: pr;
+	background-color: #495E57;
+}
