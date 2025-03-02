@@ -1,17 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./HeroSection.css"
+import { useWindowContext } from "./context/windowContext";
 
 const HeroSection = () => {
-	const [windowWidth, setWindowWidth] = useState(window.innerWidth)
-
-	useEffect(()=>{
-		const handleResize = () => {
-			setWindowWidth(window.innerWidth);
-		}
-		window.addEventListener("resize", handleResize);
-
-		return () => window.removeEventListener("resize", handleResize)
-	},[]);
+	const windowWidth = useWindowContext();
 
 	if (windowWidth > 600){
 		return (
