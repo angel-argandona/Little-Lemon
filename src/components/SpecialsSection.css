@@ -1,0 +1,45 @@
+/* General styling */
+.specials-section {
+	padding-top: 5rem;
+}
+
+/* Big screen layout */
+@media (min-width: 600px) {
+	.specials-section {
+		display: grid;
+		grid-template-columns: minmax(0, 10vw) 1fr minmax(0, 10vw);
+		grid-template-rows: auto;
+	}
+
+	.specials-content {
+		display: grid;
+		grid-template-columns: 50% 50%;
+		grid-template-rows: min-content max-content;
+		grid-template-areas: "title button" "cards cards";
+	}
+
+	.specials-content h1 {
+		grid-area: title;
+		color: #333333;
+	}
+
+	.specials-content button {
+		grid-area: button;
+		justify-self: end;
+	}
+
+	.specials-content .cards-section {
+		grid-area: cards;
+	}
+
+	.dish-picture {
+		max-width: 20vw;
+		height: auto;
+		object-fit: contain;
+	}
+}
+
+/* Small screen Layout */
+@media (max-width: 600px) {
+
+}

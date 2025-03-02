@@ -1,6 +1,6 @@
 import React from "react";
-import "./Main.css";
 import HeroSection from "./HeroSection";
+import SpecialsSection from "./SpecialsSection";
 
 /*<section className="hero-section">
 				<div className="padding-left"></div>
@@ -20,19 +20,13 @@ const Main = () => {
 	return (
 		<main>
 			<HeroSection/>
-			<section className="specials-section">
-
-			</section>
+			<SpecialsSection/>
 			<section className="testimonials-section">
-
+				
 			</section>
 			<section className="chicago-section">
 
 			</section>
-
-			<h3>This is h3</h3>
-			<h4>This is h4</h4>
-			<h5>This is h5</h5>
 		</main>
 	)
 }

@@ -1,28 +1,11 @@
 /* General styling */
-main img {
-	border-radius: 30px;
-}
-
-main button {
-	font-family: sans-serif;
-	font-size: 18pt;
-	font-weight: 800;
-	color: "black";
-	text-transform: uppercase;
-	background-color: #F4CE14;
-	border-radius: 16px;
-	padding: 15px 50px 15px 50px;
-	margin: 0 0 20px 0;
-}
-
 .hero-section h1 {
-	margin-top: 5vh;
+	margin-top: 3vh;
 }
 
 .hero-section p {
 	color: #EDEFEE;
-	font-size: 18pt;
-	margin-top: 3vh;
+	margin-top: 2vh;
 }
 
 .hero-section img {
@@ -38,9 +21,10 @@ main button {
 	.hero-section {
 		display: grid;
 		grid-template-columns: minmax(0,10vw) auto minmax(0,10vw);
-		grid-template-rows: 40vh 5vh;
-		grid-template-areas: "pl content pr" ". . . ";
+		grid-template-rows: 530px;
+		grid-template-areas: "pl content pr";
 		place-items: stretch;
+		margin-bottom: 5vh;
 	}
 	
 	.hero-section .padding-left {
@@ -54,7 +38,8 @@ main button {
 		display: grid;
 		overflow: visible;
 		grid-template-columns: 50% 50%;
-		grid-template-rows: 100%;
+		grid-template-rows: 1fr 1fr;
+		grid-template-areas: "text pic" "button pic";
 	}
 	
 	.hero-section .padding-right {
@@ -62,12 +47,22 @@ main button {
 		background-color: #495E57;
 	}
 	
-	.hero-section img {
+	.hero-content img {
+		grid-area: pic;
 		justify-self: end;
+	}
+
+	.hero-text {
+		grid-area: text;
+	}
+
+	.hero-content button {
+		grid-area: button;
+		align-self: end;
 	}
 }
 
-/* Small screen layout */
+/* Small screen Layout */
 @media (max-width:600px) {
 	.hero-section {
 		height: 80vh;
@@ -84,7 +79,7 @@ main button {
 		place-items: center;
 	}
 
-	.hero-content p {
+	.hero-content h1, .hero-content h2, .hero-content p {
 		text-align: center;
 	}
 }
