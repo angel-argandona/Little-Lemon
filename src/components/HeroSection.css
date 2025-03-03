@@ -1,18 +1,18 @@
 /* General styling */
 .hero-section h1 {
-	margin-top: 3vh;
+	margin-top: 2.5rem;
 }
 
 .hero-section p {
 	color: #EDEFEE;
-	margin-top: 2vh;
+	margin-top: 1.6rem;
 }
 
 .hero-section img {
-	max-height: 42vh;
+	max-height: 35rem;
 	min-height: 70%;
 	max-width: 90%;
-	margin-top: 3vh;
+	margin-top: 2.5rem;
 	margin-left: 10%;
 }
 
@@ -21,10 +21,10 @@
 	.hero-section {
 		display: grid;
 		grid-template-columns: minmax(0,10vw) auto minmax(0,10vw);
-		grid-template-rows: 530px;
+		grid-template-rows: 32rem;
 		grid-template-areas: "pl content pr";
 		place-items: stretch;
-		margin-bottom: 5vh;
+		margin-bottom: 4.2rem;
 	}
 	
 	.hero-section .padding-left {
@@ -65,7 +65,7 @@
 /* Small screen Layout */
 @media (max-width:600px) {
 	.hero-section {
-		height: 80vh;
+		height: 60rem;
 		background-image: url("../images/hero-image.jpg");
 		background-size: cover;
 		display: flex;

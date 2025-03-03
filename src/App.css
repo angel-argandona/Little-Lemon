@@ -50,14 +50,14 @@ p {
 	color: #495E57;
 }
 
-p.lead-text {
+.lead-text {
 	font-family: sans-serif;
 	font-size: 1.5rem;
 	font-weight: 500;
 	color: #333333;
 }
 
-p.hightlight-text {
+.highlight-text {
 	font-family: sans-serif;
 	font-size: 1.6rem;
 	font-weight: 500;
@@ -171,9 +171,8 @@ footer p {
 	footer {
 		display: grid;
 		grid-template-columns: minmax(0,10vw) minmax(50px,150px) 1fr 1fr 1fr minmax(0,10vw);
-		grid-template-rows: 250px;
+		grid-template-rows: 15rem;
 		place-items: stretch;
-		gap: 0px;
 	}
 
 	.footer-logo {
@@ -203,10 +202,10 @@ footer p {
 	footer {
 		display: grid;
 		grid-template-columns: 30vw 70vw;
-		grid-template-rows: 0 repeat(3, 250px);
+		grid-template-rows: 0 repeat(3, 15rem);
 		grid-template-areas: "empty1 empty2" "logo nav" "contact contact" "social social";
 		place-items: stretch;
-		gap: 20px;
+		gap: 1.2rem;
 	}
 
 	.footer-logo {
