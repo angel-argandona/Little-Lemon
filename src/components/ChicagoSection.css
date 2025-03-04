@@ -1,7 +1,102 @@
 /* General styling */
+.chicago-section {
+	padding-top: 5rem;
+	padding-bottom: 5rem;
+}
 
+.chicago-section h1 {
+	color: #495E57;
+}
+
+.chicago-section h2 {
+	color: #F4CE14;
+}
+
+.chicago-section h5 {
+	margin-top: 1.6rem;
+}
+
+.chicago-section img {
+	object-fit: cover;
+}
 
 /* Big screen layout */
+@media (min-width: 600px){
+	.chicago-section {
+		display: grid;
+		grid-template-columns: minmax(0,10vw) auto minmax(0,10vw);
+		grid-template-rows: minmax(32rem, auto);
+		place-items: stretch;
+	}
+	
+	.chicago-content {
+		display: grid;
+		grid-template-columns: 1fr minmax(18rem, 40rem);
+		grid-template-rows: 100%;
+	}
+	
+	.chicago-content img {
+		margin-left: 10%;
+		justify-self: end;
+	}
+}
 
+/* Transition points */
+@media (min-width: 1300px) {
+	.chicago-images {
+		position: relative;
+	}
+	
+	.chicago-section img {
+		max-height: 70%;
+		min-height: 40%;
+		max-width: 70%;
+		display: inline-block;
+		position: absolute;
+	}
+
+	.chicago-images #one {
+		right: 0;
+		top: 0;
+		z-index: 1;
+	}
+	
+	.chicago-images #two {
+		left: 0;
+		bottom: 0;
+	}
+}
+
+@media (min-width: 600px) and (max-width: 1300px) {
+	.chicago-images {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+	}
+	
+	.chicago-images img {
+		width: 90%;
+		height: auto;
+	}
+}
 
 /* Small screen Layout */
+@media (max-width:600px) {
+	.chicago-section {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		padding-left: 1.8rem;
+		padding-right: 1.8rem;
+	}
+
+	.chicago-section h1, .chicago-section h2, .chicago-section h5 {
+		text-align: center;
+	}
+
+	.chicago-section img {
+		width: 100%;
+		height: auto;
+		margin-top: 2rem;
+	}
+}

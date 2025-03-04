@@ -2,6 +2,7 @@ import React from "react";
 import HeroSection from "./HeroSection";
 import SpecialsSection from "./SpecialsSection";
 import TestimonialsSection from "./TestimonialsSection";
+import ChicagoSection from "./ChicagoSection";
 
 const Main = () => {
 	return (
@@ -9,9 +10,7 @@ const Main = () => {
 			<HeroSection/>
 			<SpecialsSection/>
 			<TestimonialsSection/>
-			<section className="chicago-section">
-
-			</section>
+			<ChicagoSection/>
 		</main>
 	)
 }
