@@ -9,16 +9,18 @@
 }
 
 .hero-section img {
-	max-height: 35rem;
+	max-height: 90%;
 	min-height: 70%;
 	max-width: 90%;
-	margin-top: 2.5rem;
-	margin-left: 10%;
+	margin: 2.5rem 0 0 10%;
 }
 
 /* Big screen layout */
 @media (min-width: 600px){
 	.hero-section {
+		background-repeat: no-repeat;
+		background-size: 100% 90%;
+		background-image: linear-gradient(to right, #495E57, #495E57);
 		display: grid;
 		grid-template-columns: minmax(0,10vw) auto minmax(0,10vw);
 		grid-template-rows: 32rem;
@@ -29,12 +31,10 @@
 	
 	.hero-section .padding-left {
 		grid-area: pl;
-		background-color: #495E57;
 	}
 	
 	.hero-content {
 		grid-area: content;
-		background-color: #495E57;
 		display: grid;
 		overflow: visible;
 		grid-template-columns: 50% 50%;
@@ -44,7 +44,6 @@
 	
 	.hero-section .padding-right {
 		grid-area: pr;
-		background-color: #495E57;
 	}
 	
 	.hero-content img {

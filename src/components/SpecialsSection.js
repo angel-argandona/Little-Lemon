@@ -38,7 +38,6 @@ const SpecialsSection = () => {
 							price={dish.price}
 							desc={dish.description}
 							relPath={dish.relPath}
-							str = {dish.str}
 						/>))
 					}
 				</div>

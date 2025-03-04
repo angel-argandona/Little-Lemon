@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import "./HeroSection.css"
 import { useWindowContext } from "./context/windowContext";
 
@@ -33,7 +32,6 @@ const HeroSection = () => {
 			</section>
 		)
 	}
-
 }
 
 export default HeroSection;

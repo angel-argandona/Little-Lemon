@@ -8,7 +8,7 @@
 	color: #333333;
 }
 
-.card {
+.dish-card {
 	width: 30rem;
 	background-color: #EDEFEE;
 	margin: 1.8rem 0 1.8rem 0;
@@ -25,11 +25,11 @@
 	border-radius: 1.8rem 1.8rem 0 0;
 }
 
-.card h5, .card p {
+.dish-card h5, .dish-card p {
 	margin: 1rem 2rem 1rem 2rem
 }
 
-.card > div {
+.dish-card > div {
 	display: flex;
 }
 
@@ -37,7 +37,7 @@
 	justify-content: space-between;
 }
 
-.card .price {
+.dish-card .price {
 	color: #EE9972;
 }
 
@@ -93,7 +93,7 @@
 		margin-left: 1.8rem;
 	}
 
-	.card {
+	.dish-card {
 		margin-left: 1.8rem;
 	}
 

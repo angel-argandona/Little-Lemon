@@ -3,7 +3,7 @@ import React from "react";
 const DishCard = ({name, price, desc, relPath}) => {
 	
 	return (
-		<div className="card">
+		<div className="dish-card">
 			<img className="dish-picture" src={require(`../images/${relPath}`)}></img>
 			<div className="card-title">
 				<h5>{name}</h5>
