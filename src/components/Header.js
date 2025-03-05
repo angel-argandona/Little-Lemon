@@ -5,20 +5,12 @@ import { useWindowContext } from "./context/windowContext";
 const Header = () => {
 	const windowWidth = useWindowContext();
 	
-	const navStyle = {
-		fontFamily: "sans-serif",
-		fontSize: "1.8rem",
-		fontWeight: 800,
-		textTransform: "uppercase",
-		color: "black",
-	};
-	
-	if (windowWidth > 600){
+	if (windowWidth > 1350){
 		return (
 			<header>
 				<div></div>
 				<img className="header-logo" src={require("../images/logos/big-logo-1.png")}></img>
-				<Nav style={navStyle}></Nav>
+				<Nav></Nav>
 				<div></div>
 			</header>
 		)
@@ -30,15 +22,6 @@ const Header = () => {
 			</header>
 		)
 	}
-
-	return (
-		<header>
-			<div></div>
-			<img className="header-logo" src={require("../images/logos/big-logo-1.png")}></img>
-			{windowWidth>600? <Nav style={navStyle}></Nav>: <img style={{height:"4rem", width:"auto"}} src={require("../images/hamburger-icon.png")}></img>}
-			<div></div>
-		</header>
-	)
 }
 
 export default Header;

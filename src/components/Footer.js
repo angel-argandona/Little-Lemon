@@ -13,7 +13,7 @@ const Footer = () => {
 		<footer>
 			<div className="padding-left"></div>
 			<img className="footer-logo" src={require("../images/logos/small-logo-white.png")}></img>
-			<Nav style={footerStyle}/>
+			<Nav/>
 			<div className="contact-info">
 				<h3 style={{color:"white"}}>Contact</h3>
 				<p style={footerStyle}>Adress</p>
