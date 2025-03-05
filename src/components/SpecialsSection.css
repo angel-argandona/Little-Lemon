@@ -9,7 +9,6 @@
 }
 
 .dish-card {
-	width: 30rem;
 	background-color: #EDEFEE;
 	margin: 1.8rem 0 1.8rem 0;
 	border-radius: 1.8rem 1.8rem 0 0;
@@ -80,21 +79,25 @@
 		flex-wrap: wrap;
 		justify-content: space-between;
 	}
+
+	.dish-card {
+		width: 30rem;
+	}
 }
 
 /* Small screen Layout */
 @media (max-width: 600px) {
+	.specials-section {
+		padding-left: 1.8rem;
+		padding-right: 1.8rem;
+	}
+	
 	.specials-content button {
 		margin-top: 1.6rem;
-		margin-left: 1.8rem;
-	}
-
-	.specials-section h1 {
-		margin-left: 1.8rem;
 	}
 
 	.dish-card {
-		margin-left: 1.8rem;
+		width: 100%;
 	}
 
 	.card-title {

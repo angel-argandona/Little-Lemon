@@ -116,20 +116,16 @@ main button {
 
 footer {
 	padding-top: 5rem;
-	padding-bottom: 1.2rem;
+	padding-bottom: 2rem;
 	background-color: #495E57;
 }
 
 .footer-logo {
 	max-height: 90%;
 	max-width: 90%;
-	min-width: 3.5rem;
+	min-width: 2.5rem;
 	object-fit: contain;
 	justify-self: start;
-}
-
-footer nav, footer .contact-info, footer .social-links {
-	padding-left: 1.8rem;
 }
 
 footer ul {
@@ -180,6 +176,10 @@ footer p {
 	.footer-logo {
 		padding: 5%;
 	}
+
+	footer nav, footer .contact-info, footer .social-links {
+		padding-left: 1.8rem;
+	}
 }
 
 /* Small screen layout */
@@ -202,32 +202,30 @@ footer p {
 	}
 	
 	footer {
+		padding-left: 1.8rem;
+		padding-right: 1.8rem;
 		display: grid;
-		grid-template-columns: 30vw 70vw;
+		grid-template-columns: 1fr max-content;
 		grid-template-rows: 0 repeat(3, 15rem);
 		grid-template-areas: "empty1 empty2" "logo nav" "contact contact" "social social";
 		place-items: stretch;
-		gap: 1.2rem;
+		gap: 1.8rem;
 	}
 
 	.footer-logo {
 		grid-area: logo;
-		padding-left: 1.8rem;
 	}
 
 	footer nav {
 		grid-area: nav;
-		padding-left: 0;
 	}
 
 	.contact-info {
 		grid-area: contact;
-		padding-left: 0;
 	}
 
 	.social-links {
 		grid-area: social;
-		padding-left: 0;
 	}
 
 	footer .padding-left {
