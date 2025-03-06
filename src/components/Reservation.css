@@ -1,0 +1,43 @@
+.reservation-page {
+	padding: 5rem 1.8rem 5rem 1.8rem;
+}
+
+.reservation-page h1 {
+	color: #333333;
+	margin-bottom: 1.6rem;
+}
+
+.reservation-page label {
+	font-family: sans-serif;
+	font-size: 2rem;
+	font-weight: 800;
+	color: #333333;
+	margin: 0;
+}
+
+.reservation-page input {
+	padding: 1rem;
+	margin: 1rem;
+	font-family: sans-serif;
+	font-size: 1.5rem;
+	font-weight: 500;
+	color: #333333;
+}
+
+input[type=checkbox] {
+	transform: scale(3);
+}
+
+input[type=submit] {
+	font-family: sans-serif;
+	font-size: 1.6rem;
+	font-weight: 800;
+	color: #333333;
+	text-transform: uppercase;
+	background-color: #F4CE14;
+	border-radius: 1rem;
+	padding: 0.9rem 3rem 0.9rem 3rem;
+	margin: 0 0 1.8rem 0;
+	width: fit-content;
+	height: fit-content;
+}

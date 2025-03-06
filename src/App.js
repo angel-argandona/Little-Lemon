@@ -4,7 +4,7 @@ import Main from './components/Main';
 import Footer from './components/Footer';
 import { Routes, Route } from 'react-router-dom';
 import { WindowProvider } from './components/context/windowContext';
-import Reservations from './components/Reservations';
+import Reservation from './components/Reservation';
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
 		<Header/>
 		<Routes>
 			<Route path='/' element={<Main/>}></Route>
-			<Route path='/reservations' element={<Reservations/>}></Route>
+			<Route path='/reservations' element={<Reservation/>}></Route>
 		</Routes>
 		<Footer/>
 	</WindowProvider>
