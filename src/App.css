@@ -66,18 +66,6 @@ p {
 	color: #495E57;
 }
 
-nav ul {
-	list-style-type: none;
-	display: flex;
-	justify-content: space-between;
-	padding: 0;
-	margin: 0;
-}
-
-nav a {
-	text-decoration: none;
-}
-
 .header-logo {
 	height: auto;
 	max-height: 90%;
@@ -87,32 +75,30 @@ nav a {
 	object-fit: contain;
 }
 
-header nav {
-	height: 100%;
+nav ul {
+	list-style-type: none;
 	display: flex;
-	align-items: stretch;
+	justify-content: space-between;
+	padding: 0;
+	margin: 0;
 }
 
-header ul {
-	text-align: center;
-	align-items: stretch;
-}
-
-header li {
-	display: flex;
-	align-items: center;
-	padding: 0.7rem;
+nav li {
 	font-family: sans-serif;
 	font-size: 1.8rem;
 	font-weight: 800;
 	text-transform: uppercase;
 }
 
+nav a {
+	text-decoration: none;
+}
+
 header a {
 	color: #333333;
 }
 
-header li:hover {
+header .nav-text:hover {
 	background-color: #F4CE14;
 }
 
@@ -177,6 +163,7 @@ footer p {
 }
 
 /* Big screen layout */
+/* Different breakout points for the header and footer */
 @media (min-width: 1350px){
 	header {
 		display: grid;
@@ -188,6 +175,23 @@ footer p {
 	
 	header img {
 		justify-self: start;
+	}
+
+	header .nav-menu {
+		height: 100%;
+		display: flex;
+		align-items: stretch;
+	}
+	
+	header .nav-menu ul {
+		text-align: center;
+		align-items: stretch;
+	}
+	
+	header .nav-menu li {
+		display: flex;
+		align-items: center;
+		padding: 0.7rem;
 	}
 }
 
@@ -209,6 +213,7 @@ footer p {
 }
 
 /* Small screen layout */
+/* Different breakout points for the header and footer */
 @media (max-width: 1350px){
 	header {
 		display: grid;
@@ -225,6 +230,33 @@ footer p {
 		height: 4rem;
 		width: 4rem;
 		margin: 0 1rem 0 1rem;
+	}
+
+	header .side-menu {
+		height: 100vh;
+		min-width: 33vw;
+		max-width: 100vw;
+		background-color: #EE9972;
+		position: fixed;
+		top: 0;
+		right: -100%;
+		transition: 500ms;
+		display: flex;
+		flex-direction: column;
+	}
+
+	header .side-menu.active {
+		right: 0;
+		transition: 400ms;
+	}
+	
+	header .side-menu ul {
+		display: flex;
+		flex-direction: column;
+	}
+	
+	header .side-menu li {
+		padding: 2rem;
 	}
 }
 

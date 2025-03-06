@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const Nav = (props) => {
+const Nav = ({sideMenu, visibility, handleClick}) => {
 	return (
-		<nav>
+		<nav className={`${sideMenu? "side-menu": "nav-menu"}${visibility? " active" : ""}`}>
 			<ul>
-				<li><Link to="/" className="nav-item">Home</Link></li>
-				<li><Link to="/about" className="nav-item">About</Link></li>
-				<li><Link to="/menu" className="nav-item">Menu</Link></li>
-				<li><Link to="/reservations" className="nav-item">Reservations</Link></li>
-				<li><Link to="/order-online">Order Online</Link></li>
-				<li><Link to="/login" className="nav-item">Login</Link></li>
+				{sideMenu? <li className="nav-close"><Link to="#" className="nav-item" onClick={() => handleClick(false)}><img src={require("../images/close-icon.png")}></img></Link></li> : null}
+				<li className="nav-text"><Link to="/" className="nav-item" onClick={() => handleClick(false)}>Home</Link></li>
+				<li className="nav-text"><Link to="/about" className="nav-item" onClick={() => handleClick(false)}>About</Link></li>
+				<li className="nav-text"><Link to="/menu" className="nav-item" onClick={() => handleClick(false)}>Menu</Link></li>
+				<li className="nav-text"><Link to="/reservations" className="nav-item" onClick={() => handleClick(false)}>Reservations</Link></li>
+				<li className="nav-text"><Link to="/order-online" className="nav-item" onClick={() => handleClick(false)}>Order Online</Link></li>
+				<li className="nav-text"><Link to="/login" className="nav-item" onClick={() => handleClick(false)}>Login</Link></li>
 			</ul>
 		</nav>
 	)
