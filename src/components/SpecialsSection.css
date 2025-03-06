@@ -60,7 +60,7 @@
 	.specials-content {
 		display: grid;
 		grid-template-columns: 50% 50%;
-		grid-template-rows: min-content max-content;
+		grid-template-rows: 5rem max-content;
 		grid-template-areas: "title button" "cards cards";
 	}
 
