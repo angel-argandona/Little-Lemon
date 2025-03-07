@@ -1,19 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-function BookingForm({date, time, guests, occasion, availableTimes, changeHandler}) {
+function BookingForm({date, time, guests, occasion, availableTimes, changeHandler}) {	
+	useEffect(()=>{
+		console.log({date, time, guests, occasion, availableTimes})
+	},[date, time, guests, occasion, availableTimes])
+
 	return (
 	<>
 		<form>
 			<label htmlFor="res-date">Choose date</label>
-			<input type="date" id="res-date" value={date} onChange={(e)=>changeHandler({date: e.target.value})}/>
+			<input type="date" id="res-date" value={date} onChange={(e)=>changeHandler({date: e.target.value}, "date")}/>
 			<label htmlFor="res-time">Choose time</label>
-			<select id="res-time " value={time} onChange={(e)=>changeHandler({time: e.target.value})}>
+			<select id="res-time " value={time} onChange={(e)=>changeHandler({time: e.target.value}, "time")}>
 				{availableTimes.map((time) => <option value={time}>{time}</option>)}
 			</select>
 			<label htmlFor="guests">Number of guests</label>
-			<input type="number" placeholder="1" min="1" max="10" id="guests" value={guests} onChange={(e)=>changeHandler({guests: e.target.value})}/>
+			<input type="number" placeholder="1" min="1" max="10" id="guests" value={guests} onChange={(e)=>{changeHandler({guests: e.target.value}, "guests")}}/>
 			<label htmlFor="occasion">Occasion</label>
-			<select id="occasion" value={occasion} onChange={(e)=>changeHandler({occasion: e.target.value})}>
+			<select id="occasion" value={occasion} onChange={(e)=>changeHandler({occasion: e.target.value}, "occasion")}>
 				<option value="birthday">Birthday</option>
 				<option value="anniversary">Anniversary</option>
 			</select>

@@ -7,32 +7,46 @@ import { Routes, Route } from 'react-router-dom';
 import { WindowProvider } from './components/context/windowContext';
 import BookingPage from './components/BookingPage';
 
-const initializeTimes = (date) => {
-	let times = []
-	for (let i=8; i<22; i++){
-		times.push(i + ":00")
+/* 
+const index = state.availableTimes.indexOf(action.type)
+	if (index > -1) {
+		return {...state, availableTimes: state.availableTimes.splice(index, 1)}
+	} else {
+		return {...state}
 	}
-	return {date: date, availableTimes: times}
-}
+*/
 
-const updateTimes = (state, action) => {
-	return state.push(initializeTimes(action.type));
-}
+
 
 function App() {
+	
+	const initializeTimes = (date) => {
+		let times = []
+		for (let i=8; i<22; i++){
+			times.push(i + ":00")
+		}
+		return {date: date, availableTimes: times}
+	}
+	
+	const updateTimes = (state, action) => {
+		const newTimes = initializeTimes(action.type)
+		
+		return newTimes;
+	}
+
 	const currentDate = new Date().toISOString().split("T")[0];
-	const availableTimes = [initializeTimes(currentDate)]
+	const availableTimes = initializeTimes(currentDate)
 	const [state, dispatch] = useReducer(availableTimes, updateTimes)
 	const [fieldValues, setFieldValues] = useState({
-		date: state[0].date,
-		time: state[0].availableTimes[0],
+		date: currentDate,
+		time: availableTimes.availableTimes[0],
 		guests: "1",
 		occasion: "birthday",
-		availableTimes: state[0].availableTimes,
-		changeHandler: (key, value)=>{
-			setFieldValues({...fieldValues, key:value})
+		availableTimes: availableTimes.availableTimes,
+		changeHandler: (obj, key)=>{
+			setFieldValues({...fieldValues, [key]:obj[key]})
 			if (key === 'date') {
-				dispatch({type: value})
+				dispatch({type: obj[key]})
 			}
 		}
 	});
