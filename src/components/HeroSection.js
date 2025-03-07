@@ -1,5 +1,6 @@
 import "./HeroSection.css"
 import { useWindowContext } from "./context/windowContext";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
 	const windowWidth = useWindowContext();
@@ -14,7 +15,7 @@ const HeroSection = () => {
 						<h2>Chicago</h2>
 						<p className="lead-text">We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.</p>
 					</div>
-					<button>Reserve a Table</button>
+					<Link to="/reservations"><button>Reserve a Table</button></Link>
 					<img src={require("../images/hero-image.jpg")}></img>
 				</section>
 				<div className="padding-right"></div>

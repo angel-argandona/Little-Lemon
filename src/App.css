@@ -67,7 +67,7 @@ p {
 	color: #495E57;
 }
 
-.header-logo {
+#header-logo {
 	height: auto;
 	max-height: 90%;
 	max-width: 90%;
@@ -234,7 +234,7 @@ footer p {
 		align-items: center;
 	}
 
-	.header-logo {
+	#header-logo {
 		justify-self: start;
 	}
 

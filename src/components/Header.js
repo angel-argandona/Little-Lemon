@@ -18,7 +18,7 @@ const Header = () => {
 		return (
 			<header>
 				<div></div>
-				<img className="header-logo" src={require("../images/logos/big-logo-1.png")}></img>
+				<Link to="/"><img id="header-logo" src={require("../images/logos/big-logo-1.png")}></img></Link>
 				<Nav sideMenu={false}/>
 				<div></div>
 			</header>
@@ -26,7 +26,7 @@ const Header = () => {
 	} else {
 		return (
 			<header>
-				<img className="header-logo" src={require("../images/logos/big-logo-1.png")}></img>
+				<img id="header-logo" src={require("../images/logos/big-logo-1.png")}></img>
 				<Link to="#"><img className="burger-icon" src={require("../images/hamburger-icon.png")} onClick={()=>handleClick(!showSideMenu)}></img></Link>
 				<Nav sideMenu={true} visibility={showSideMenu} handleClick={handleClick}/>
 			</header>

@@ -16,33 +16,31 @@ const index = state.availableTimes.indexOf(action.type)
 	}
 */
 
+export const initializeTimes = () => {
+	let times = [];
+	for (let i=8; i<22; i++){
+		times.push(i + ":00");
+	}
+	return times;
+};
 
+export const updateTimes = (state, action) => {
+	const newTimes = initializeTimes();
+	setFieldValues({...fieldValues, availableTimes: newTimes});
+	return newTimes;
+};
 
 function App() {
 	
-	const initializeTimes = (date) => {
-		let times = []
-		for (let i=8; i<22; i++){
-			times.push(i + ":00")
-		}
-		return {date: date, availableTimes: times}
-	}
-	
-	const updateTimes = (state, action) => {
-		const newTimes = initializeTimes(action.type)
-		
-		return newTimes;
-	}
-
 	const currentDate = new Date().toISOString().split("T")[0];
-	const availableTimes = initializeTimes(currentDate)
-	const [state, dispatch] = useReducer(availableTimes, updateTimes)
+	const availableTimes = initializeTimes();
+	const [state, dispatch] = useReducer(availableTimes, updateTimes);
 	const [fieldValues, setFieldValues] = useState({
 		date: currentDate,
-		time: availableTimes.availableTimes[0],
+		time: availableTimes[0],
 		guests: "1",
 		occasion: "birthday",
-		availableTimes: availableTimes.availableTimes,
+		availableTimes: availableTimes,
 		changeHandler: (obj, key)=>{
 			setFieldValues({...fieldValues, [key]:obj[key]})
 			if (key === 'date') {
