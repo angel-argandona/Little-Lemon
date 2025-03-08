@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from 'react';
+import React, { useState, useReducer, useEffect } from 'react';
 import './App.css';
 import Header from './components/Header';
 import Main from './components/Main';
@@ -6,15 +6,7 @@ import Footer from './components/Footer';
 import { Routes, Route } from 'react-router-dom';
 import { WindowProvider } from './components/context/windowContext';
 import BookingPage from './components/BookingPage';
-
-/* 
-const index = state.availableTimes.indexOf(action.type)
-	if (index > -1) {
-		return {...state, availableTimes: state.availableTimes.splice(index, 1)}
-	} else {
-		return {...state}
-	}
-*/
+/*import { type } from '@testing-library/user-event/dist/type';*/
 
 export const initializeTimes = () => {
 	let times = [];
@@ -25,36 +17,53 @@ export const initializeTimes = () => {
 };
 
 export const updateTimes = (state, action) => {
-	const newTimes = initializeTimes();
-	setFieldValues({...fieldValues, availableTimes: newTimes});
-	return newTimes;
+	return state
+	
+	/*if (action.type === "newDate") {
+		const newTimes = initializeTimes();
+		return newTimes;
+	} else if (action.type === "submit") {
+		return state.filter(element => element !== fieldValues.time)
+	}*/
 };
 
 function App() {
-	
 	const currentDate = new Date().toISOString().split("T")[0];
 	const availableTimes = initializeTimes();
-	const [state, dispatch] = useReducer(availableTimes, updateTimes);
+	const [state, dispatch] = useReducer(updateTimes, availableTimes);
 	const [fieldValues, setFieldValues] = useState({
 		date: currentDate,
-		time: availableTimes[0],
+		time: state[0],
 		guests: "1",
 		occasion: "birthday",
-		availableTimes: availableTimes,
-		changeHandler: (obj, key)=>{
-			setFieldValues({...fieldValues, [key]:obj[key]})
-			if (key === 'date') {
-				dispatch({type: obj[key]})
-			}
-		}
+		availableTimes: state
 	});
+
+	const changeField = (e) => {
+		setFieldValues({...fieldValues, [e.target.name]:e.target.value});
+		console.log(`Updated ${e.target.name} to ${e.target.value}`);
+		if (e.target.name === "date") {
+			dispatch({type: "newDate"});
+		}
+	}
+
+	const submitHandler = (e) => {
+		e.preventDefault();
+		console.log("Reservation values");
+		console.log(fieldValues);
+	}
 	
+	useEffect(() => {
+		setFieldValues({...fieldValues, time: state[0], availableTimes: state})
+		console.log("State changed")
+	}, [state])
+
 	return (
     <WindowProvider>
 		<Header/>
 		<Routes>
 			<Route path='/' element={<Main/>}></Route>
-			<Route path='/reservations' element={<BookingPage {...fieldValues}/>}></Route>
+			<Route path='/reservations' element={<BookingPage {...fieldValues} changeField={changeField} submitHandler={submitHandler}/>}></Route>
 		</Routes>
 		<Footer/>
 	</WindowProvider>
