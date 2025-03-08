@@ -4,7 +4,7 @@ const DishCard = ({name, price, desc, relPath}) => {
 	
 	return (
 		<div className="dish-card">
-			<img className="dish-picture" src={require(`../images/${relPath}`)}></img>
+			<img className="dish-picture" alt={name} src={require(`../images/${relPath}`)}></img>
 			<div className="card-title">
 				<h5>{name}</h5>
 				<p className="highlight-text price">{price}</p>
@@ -12,7 +12,7 @@ const DishCard = ({name, price, desc, relPath}) => {
 			<p>{desc}</p>
 			<div className="delivery-call">
 				<p className="highlight-text">Order a delivery</p>
-				<img className="delivery-icon" src={require("../images/delivery-icon.jpg")}></img>
+				<img className="delivery-icon" alt="" src={require("../images/delivery-icon.jpg")}></img>
 			</div>
 		</div>
 	)

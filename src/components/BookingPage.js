@@ -8,7 +8,7 @@ function BookingPage(props) {
 			<h1>Reservation</h1>
 			<BookingForm {...props}/>
 		</main>
-  );
+  	);
 }
 
 export default BookingPage;

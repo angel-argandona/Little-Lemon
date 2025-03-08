@@ -35,6 +35,7 @@ const SpecialsSection = () => {
 					{dishes.map((dish) => (
 						<DishCard 
 							name={dish.name}
+							key={dish.name}
 							price={dish.price}
 							desc={dish.description}
 							relPath={dish.relPath}

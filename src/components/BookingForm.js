@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 
 function BookingForm({date, time, guests, occasion, availableTimes, changeField, submitHandler}) {	
+	
 	return (
 	<>
 		<form onSubmit={submitHandler}>

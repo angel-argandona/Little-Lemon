@@ -3,23 +3,13 @@ import './App.css';
 import Header from './components/Header';
 import Main from './components/Main';
 import Footer from './components/Footer';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import { WindowProvider } from './components/context/windowContext';
 import BookingPage from './components/BookingPage';
-/*import { type } from '@testing-library/user-event/dist/type';*/
+import ConfirmedBooking from './components/ConfirmedBooking';
 
 export const initializeTimes = (date) => {
 	return fetchAPI(date)
-	
-	/*if (fetchAPI) {
-		return fetchAPI(date);
-	} else {
-		let times = [];
-		for (let i=8; i<22; i++){
-			times.push(i + ":00");
-		}
-		return times;
-	}*/
 };
 
 export const updateTimes = (state, action) => {
@@ -28,13 +18,6 @@ export const updateTimes = (state, action) => {
 	const day = action.type.split("-")[2];
 	const newDateObj = new Date(year, month, day);
 	return fetchAPI(newDateObj);
-	
-	/*if (action.type === "newDate") {
-		const newTimes = initializeTimes();
-		return newTimes;
-	} else if (action.type === "submit") {
-		return state.filter(element => element !== fieldValues.time)
-	}*/
 };
 
 const seededRandom = function (seed) {
@@ -70,6 +53,8 @@ function App() {
 	const currentDate = dateObj.toISOString().split("T")[0];
 	const availableTimes = initializeTimes(dateObj);
 	const [state, dispatch] = useReducer(updateTimes, availableTimes);
+	const [formSuccess, setFormSuccess] = useState(false);
+	const navigate = useNavigate();
 	const [fieldValues, setFieldValues] = useState({
 		date: currentDate,
 		time: state[0],
@@ -92,14 +77,16 @@ function App() {
 		console.log(fieldValues);
 		if (submitAPI(fieldValues)){
 			console.log("Submission successful");
+			setFormSuccess(true);
 		}
 	}
 
+
+	/* FAILED IMPORT */
 	/*useEffect(() => {
 		const script = document.createElement('script')
 		script.src = "https://raw.githubusercontent.com/courseraap/capstone/main/api.js"
 		script.async = true
-		script.onload = () => updateTimes();
 		document.body.appendChild(script);
 
 		return document.body.removeChild(script);
@@ -110,12 +97,19 @@ function App() {
 		setFieldValues({...fieldValues, time: state[0], availableTimes: state})
 	}, [state])
 
+	useEffect(() => {
+		if (formSuccess) {
+			navigate("/confirmed-booking");
+		}
+	}, [formSuccess])
+
 	return (
     <WindowProvider>
 		<Header/>
 		<Routes>
 			<Route path='/' element={<Main/>}></Route>
 			<Route path='/reservations' element={<BookingPage {...fieldValues} changeField={changeField} submitHandler={submitHandler}/>}></Route>
+			<Route path='/confirmed-booking' element={<ConfirmedBooking date={fieldValues.date} time={fieldValues.time} guests={fieldValues.guests}/>}></Route>
 		</Routes>
 		<Footer/>
 	</WindowProvider>

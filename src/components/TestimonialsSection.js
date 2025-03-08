@@ -33,6 +33,7 @@ const TestimonialsSection = () => {
 					{reviews.map((review) => (
 						<ReviewCard 
 							name={review.name}
+							key={review.name}
 							rating={review.rating}
 							desc={review.description}
 							imgSrc={review.imageSource}
