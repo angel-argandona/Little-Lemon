@@ -1,0 +1,11 @@
+.confirmed-booking-page {
+	display: flex;
+	flex-direction: column;
+	padding: 5rem 1.8rem 5rem 1.8rem;
+	height: 48rem;
+}
+
+.confirmed-booking-page h2 {
+	color: #333333;
+	margin-top: 2rem;
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import './ConfirmedBooking.css';
 
 function ConfirmedBooking({date, time, guests}) {
   return (

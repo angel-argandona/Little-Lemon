@@ -183,7 +183,7 @@ footer p {
 }
 
 /* Big screen layout */
-/* Different breakout points for the header and footer */
+/* Different breakpoints for the header and footer */
 @media (min-width: 1350px){
 	header {
 		display: grid;
@@ -215,7 +215,7 @@ footer p {
 	}
 }
 
-@media (min-width: 600px) {	
+@media (min-width: 700px) {	
 	footer {
 		display: grid;
 		grid-template-columns: minmax(0,10vw) minmax(50px,150px) 1fr 1fr 1fr minmax(0,10vw);
@@ -233,7 +233,7 @@ footer p {
 }
 
 /* Small screen layout */
-/* Different breakout points for the header and footer */
+/* Different breakpoints for the header and footer */
 @media (max-width: 1350px){
 	header {
 		display: grid;
@@ -244,6 +244,7 @@ footer p {
 
 	.header-logo {
 		justify-self: start;
+		margin: 0 1rem 0 1rem;
 	}
 
 	.burger-icon {
@@ -259,7 +260,7 @@ footer p {
 		background-color: #EE9972;
 		position: fixed;
 		top: 0;
-		right: -100%;
+		right: -110%;
 		transition: 500ms;
 		display: flex;
 		flex-direction: column;
@@ -280,7 +281,7 @@ footer p {
 	}
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
 	footer {
 		padding-left: 1.8rem;
 		padding-right: 1.8rem;

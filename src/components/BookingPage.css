@@ -1,17 +1,17 @@
 .booking-page {
-	height: 60rem;
+	height: 48rem;
 	padding: 5rem 1.8rem 5rem 1.8rem;
+}
+
+.booking-page form {
+	display: flex;
+	flex-direction: column;
+	max-width: 40rem;
 }
 
 .booking-page h1 {
 	color: #333333;
 	margin-bottom: 1.6rem;
-}
-
-.booking-page form {
-	display: grid;
-	max-width: 200px;
-	gap: 20px
 }
 
 .booking-page label {
@@ -44,4 +44,9 @@
 
 input[type=checkbox] {
 	transform: scale(3);
+}
+
+.booking-page button {
+	margin-top: 4rem;
+	align-self: center;
 }
