@@ -13,6 +13,8 @@ const retrieveFromLocalStorage = (key) => {
 		const value = window.localStorage.getItem(key);
 		if (value) {
 			return JSON.parse(value)
+		} else {
+			return null
 		}
 	} catch (error) {
 		console.error("Unable to retrieve from local storage:", error)
@@ -26,8 +28,7 @@ export const initializeTimes = (date) => {
 	if (!times){
 		times = fetchAPI(date)
 		window.localStorage.setItem(dateString, JSON.stringify(times));
-		console.log(`Created entry for ${dateString} as ${times}`);
-	} 
+	}
 
 	return times
 };
@@ -38,12 +39,10 @@ export const updateTimes = (state, action) => {
 		const time = action.type.split(" ")[2];
 		const newTimes = state.filter(element => element !== time)
 		window.localStorage.setItem(date, JSON.stringify(newTimes))
-		console.log(`New stored value: ${JSON.parse(window.localStorage.getItem(date))}`)
 		return newTimes
 	} else {
 		const times = retrieveFromLocalStorage(action.type);
 		if (times) {
-			console.log(`Fetched: ${times}`);
 			return times;
 		} else {
 			const year = action.type.split("-")[0];
@@ -54,7 +53,6 @@ export const updateTimes = (state, action) => {
 			const newDateObj = new Date(year, month, day);
 			return initializeTimes(newDateObj);
 		}
-		
 	}
 };
 
@@ -111,10 +109,8 @@ function App() {
 
 	const submitHandler = (e) => {
 		e.preventDefault();
-		console.log("Reservation values");
 		console.log(fieldValues);
 		if (submitAPI(fieldValues)){
-			console.log("Submission successful");
 			setFormSuccess(true);
 			dispatch({type:`submit ${fieldValues.date} ${fieldValues.time}`});
 		}
