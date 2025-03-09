@@ -8,16 +8,54 @@ import { WindowProvider } from './components/context/windowContext';
 import BookingPage from './components/BookingPage';
 import ConfirmedBooking from './components/ConfirmedBooking';
 
+const retrieveFromLocalStorage = (key) => {
+	try {
+		const value = window.localStorage.getItem(key);
+		if (value) {
+			return JSON.parse(value)
+		}
+	} catch (error) {
+		console.error("Unable to retrieve from local storage:", error)
+		return null
+	}
+}
+
 export const initializeTimes = (date) => {
-	return fetchAPI(date)
+	const dateString = date.toISOString().split("T")[0];
+	let times = retrieveFromLocalStorage(dateString);
+	if (!times){
+		times = fetchAPI(date)
+		window.localStorage.setItem(dateString, JSON.stringify(times));
+		console.log(`Created entry for ${dateString} as ${times}`);
+	} 
+
+	return times
 };
 
 export const updateTimes = (state, action) => {
-	const year = action.type.split("-")[0];
-	const month = action.type.split("-")[1];
-	const day = action.type.split("-")[2];
-	const newDateObj = new Date(year, month, day);
-	return fetchAPI(newDateObj);
+	if (action.type.split(" ")[0] === "submit"){
+		const date = action.type.split(" ")[1];
+		const time = action.type.split(" ")[2];
+		const newTimes = state.filter(element => element !== time)
+		window.localStorage.setItem(date, JSON.stringify(newTimes))
+		console.log(`New stored value: ${JSON.parse(window.localStorage.getItem(date))}`)
+		return newTimes
+	} else {
+		const times = retrieveFromLocalStorage(action.type);
+		if (times) {
+			console.log(`Fetched: ${times}`);
+			return times;
+		} else {
+			const year = action.type.split("-")[0];
+			let monthNum = Number(action.type.split("-")[1])
+			monthNum -= 1;
+			const month = monthNum.toString();
+			const day = action.type.split("-")[2];
+			const newDateObj = new Date(year, month, day);
+			return initializeTimes(newDateObj);
+		}
+		
+	}
 };
 
 const seededRandom = function (seed) {
@@ -78,6 +116,7 @@ function App() {
 		if (submitAPI(fieldValues)){
 			console.log("Submission successful");
 			setFormSuccess(true);
+			dispatch({type:`submit ${fieldValues.date} ${fieldValues.time}`});
 		}
 	}
 
@@ -94,14 +133,17 @@ function App() {
 	}, [])*/
 	
 	useEffect(() => {
-		setFieldValues({...fieldValues, time: state[0], availableTimes: state})
-	}, [state])
+		if (!formSuccess){
+			setFieldValues({...fieldValues, time: state[0], availableTimes: state})
+		}
+	}, [state]);
 
 	useEffect(() => {
 		if (formSuccess) {
+			setFormSuccess(false);
 			navigate("/confirmed-booking");
 		}
-	}, [formSuccess])
+	}, [formSuccess]);
 
 	return (
     <WindowProvider>
