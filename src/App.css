@@ -253,6 +253,12 @@ footer p {
 		margin: 0 1rem 0 1rem;
 	}
 
+	.close-icon {
+		height: 4rem;
+		width: 4rem;
+		margin: 0;
+	}
+
 	header .side-menu {
 		height: 100vh;
 		min-width: 33vw;

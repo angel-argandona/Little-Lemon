@@ -22,6 +22,11 @@
 	margin: 0;
 }
 
+.booking-page .error-message {
+	color: red;
+	margin-top: 1rem;
+}
+
 .booking-page input {
 	padding: 1rem;
 	margin-bottom: 1rem;

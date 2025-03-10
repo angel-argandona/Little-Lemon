@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Nav from "./Nav";
 import { useWindowContext } from "./context/windowContext";
 import { Link } from "react-router-dom";
+import {FaBars} from "react-icons/fa6";
 
 const Header = () => {
 	const windowWidth = useWindowContext();
@@ -29,7 +30,7 @@ const Header = () => {
 		return (
 			<header>
 				<img className="header-logo" src={require("../images/logos/big-logo-1.png")}></img>
-				<Link to="#"><img className="burger-icon" src={require("../images/hamburger-icon.png")} onClick={()=>handleClick(!showSideMenu)}></img></Link>
+				<Link to="#" onClick={()=>handleClick(!showSideMenu)}><FaBars className="burger-icon"/></Link>
 				<Nav sideMenu={true} visibility={showSideMenu} handleClick={handleClick}/>
 			</header>
 		);
