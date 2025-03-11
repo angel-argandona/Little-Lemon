@@ -133,7 +133,7 @@ button {
 }
 
 button:hover {
-	border-width: 0.5rem;
+	border: 0.4rem solid #333333;
 }
 
 button:active {

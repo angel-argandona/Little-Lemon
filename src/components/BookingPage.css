@@ -1,6 +1,12 @@
 .booking-page {
-	height: 48rem;
+	min-height: 48rem;
+	max-height: min-content;
 	padding: 5rem 1.8rem 5rem 1.8rem;
+}
+
+.booking-page h1 {
+	color: #333333;
+	margin-bottom: 1.6rem;
 }
 
 .booking-page form {
@@ -9,9 +15,8 @@
 	max-width: 40rem;
 }
 
-.booking-page h1 {
-	color: #333333;
-	margin-bottom: 1.6rem;
+.booking-page .asterisk {
+	color: red;
 }
 
 .booking-page label {
@@ -24,7 +29,7 @@
 
 .booking-page .error-message {
 	color: red;
-	margin-top: 1rem;
+	margin-top: 0;
 }
 
 .booking-page input {
@@ -54,4 +59,8 @@ input[type=checkbox] {
 .booking-page button {
 	margin-top: 4rem;
 	align-self: center;
+}
+
+.booking-page button:disabled {
+	background-color: gray;
 }

@@ -9,13 +9,13 @@ import { IconContext } from 'react-icons';
 import BookingPage from './components/BookingPage';
 import ConfirmedBooking from './components/ConfirmedBooking';
 
-const getDateString = (dateObj) => {
+export const getDateString = (dateObj) => {
 	const offset = dateObj.getTimezoneOffset();
 	const newDate = new Date(dateObj.getTime() - (offset*60*1000))
 	return newDate.toISOString().split('T')[0]
 }
 
-const retrieveFromLocalStorage = (key) => {
+export const retrieveFromLocalStorage = (key) => {
 	try {
 		const value = window.localStorage.getItem(key);
 		if (value) {
@@ -88,7 +88,7 @@ const submitAPI = function(formData) {
 };
 
 function App() {
-	window.localStorage.clear()
+	/*window.localStorage.clear()*/
 	const navigate = useNavigate();
 	const currentDateObj = new Date()
 	const currentDate = getDateString(currentDateObj);
@@ -100,8 +100,8 @@ function App() {
 	const [fieldValues, setFieldValues] = useState({
 		date: currentDate,
 		time: state[0],
-		guests: "1",
-		occasion: "birthday",
+		guests: "",
+		occasion: "",
 		availableTimes: state
 	});
 	const [errors, setErrors] = useState({
@@ -117,15 +117,13 @@ function App() {
 		occasion:""
 	})
 
-	const validate = (field) => {
+	const validate = (field, value) => {
 		let newErrors = {};
-		
 		if (field === "date" || field === "form"){
 			const today = new Date();
-			const selectedDate = new Date(fieldValues.date + "T23:59");
+			const selectedDate = new Date(value.date + "T23:59");
 			if (selectedDate < today) {
 				newErrors.date = "Please select today's date or a future date.";
-				console.log("Invalid date");
 			} else {
 				newErrors.date = "";
 			}
@@ -133,43 +131,55 @@ function App() {
 		
 		if (field === "time" || field === "form"){
 			const currentDateTime = new Date();
-			const dateTimeString = fieldValues.date + "T" + fieldValues.time;
+			const dateTimeString = value.date + "T" + value.time;
 			const selectedDateTime = new Date(dateTimeString);
 			if (selectedDateTime < currentDateTime){
 				newErrors.time = "Please select a time in the future.";
-				console.log("Invalid time")
 			} else {
 				newErrors.time = "";
 			}
 		}
 		
 		if (field === "guests" || field === "form"){
-			if (Number(fieldValues.guests) < 1){
-				newErrors.guests = "Please select a number greater than 0.";
-				setIsFormValid(false);
-			} else if (Number(fieldValues.guests) > 10){
-				newErrors.guests = "Please select a number less than 10.";
+			if (!value.guests){
+				newErrors.guests = "Please fill out this required field.";
+			} else if (Number(value.guests) < 1){
+				newErrors.guests = "Please enter a number greater than 0.";
+			} else if (Number(value.guests) > 10){
+				newErrors.guests = "Please enter a number less than 10.";
 			} else {
 				newErrors.guests = "";
 			}
 		}
 		
-		setErrors({...errors, ...newErrors});
-		if (field === "form"){
-			console.log(newErrors);
-			if (!newErrors.date && !newErrors.time && !newErrors.guests && !newErrors.occasion){
+		const updatedErrors = {...errors, ...newErrors};
+		if (updatedErrors.date || updatedErrors.time || updatedErrors.guests || updatedErrors.occasion){
+			setIsFormValid(false);
+		} else {
+			setIsFormValid(true);
+			if (field === "form"){
 				setIsLoading(true);
 			}
 		}
+		setErrors(updatedErrors);
 	}
 
 	const changeField = (e) => {
 		setFieldValues({...fieldValues, [e.target.name]:e.target.value});
+		if (e.target.name === "date"){
+			validate(e.target.name,{date: e.target.value})
+			dispatch({type: e.target.value});
+		} else if (e.target.name === "time"){
+			validate(e.target.name,{time: e.target.value, date: fieldValues.date})
+		} else {
+			validate(e.target.name,{[e.target.name]: e.target.value})
+		}
+		
 	}
 
 	const submitHandler = (e) => {
 		e.preventDefault();
-		validate("form");
+		validate("form", {date: fieldValues.date, time: fieldValues.time, guests: fieldValues.guests, occasion: fieldValues.occasion});
 	}
 
 	/* Send form to API if conditions are met */
@@ -177,7 +187,6 @@ function App() {
 		if (isLoading && isFormValid) {
 			setFormReceived(submitAPI(fieldValues));
 			setIsLoading(false);
-			console.log("About to navigate out")
 		}
 	},[isLoading])
 
@@ -191,45 +200,12 @@ function App() {
 		}
 	}, [formReceived]);
 
-	/* Validate each field after updating it in state 
-	   due to some fields depending on others for validation
-	   like date and time
-	*/
-	useEffect(() => {
-		validate("date")
-		dispatch({type: fieldValues.date}); /* Changing date triggers a change in time and available times as seen below */
-	},[fieldValues.date])
-
+	/* Update time selection whenever the availableTimes' state changes */
 	useEffect(() => {
 		if (!formReceived){
 			setFieldValues({...fieldValues, time: state[0], availableTimes: state})
 		}
 	}, [state]);
-
-	useEffect(() => {
-		validate("time")
-	},[fieldValues.time])
-	
-	useEffect(() => {
-		validate("guests")
-	},[fieldValues.guests])
-	
-	useEffect(() => {
-		validate("occasion")
-	},[fieldValues.occasion])
-
-	/* Listen to changes on validation errors */
-	useEffect(() => {
-		if (errors.date || errors.time || errors.guests || errors.occasion) {
-			setIsFormValid(false);
-		} else {
-			setIsFormValid(true);
-		}
-	},[errors])
-
-	/*useEffect(() => {
-		console.log(fieldValues)
-	},[fieldValues])*/
 
 	return (
     <WindowProvider>
